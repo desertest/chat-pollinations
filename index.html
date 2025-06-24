@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="菜包儿" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <title>菜包儿 AI-assistant</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script type="module" crossorigin src="/assets/index-D7m5lok-.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-LbV8_PZo.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h2>聊天历史</h2>
+                <div class="sidebar-actions">
+                    <button id="import-history-btn" class="sidebar-action-btn" title="导入对话">📥</button>
+                </div>
+            </div>
+            <ul id="history-list" class="history-list">
+            </ul>
+        </aside>
+        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+        <main class="chat-interface">
+            <header class="title-bar">
+                <button id="toggle-sidebar-btn" class="icon-btn" title="切换侧边栏">☰</button>
+                <div class="status-display">
+                    <span id="model-name"></span>
+                    <span id="session-rounds">轮次: 0</span>
+                    <span id="token-count" title="估算值，仅供参考">Tokens: ~0</span>
+                </div>
+                <div class="action-buttons">
+                    <button id="settings-btn" class="icon-btn" title="设置">⚙️</button>
+                    <button id="render-mode-btn" class="icon-btn" title="切换渲染模式">💡</button>
+                    <button id="new-chat-btn" class="icon-btn" title="新建聊天">➕</button>
+                </div>
+            </header>
+            <section id="message-area" class="message-area">
+            </section>
+            <footer class="input-area">
+                <div id="image-preview-area" class="image-preview-area">
+                </div>
+                <textarea id="message-input" placeholder="输入消息... (Ctrl+Enter 发送)" rows="1"></textarea>
+                <div class="input-actions">
+                    <button id="upload-image-btn" class="action-btn" title="上传图片">上传图片</button>
+                    <button id="send-btn" class="action-btn" title="发送">发送</button>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <form id="settings-form">
+                <div class="form-row">
+                    <label for="base-url">Base URL:</label>
+                    <div class="form-control-wrapper">
+                        <input type="text" id="base-url" name="baseUrl" required>
+                        <select id="base-url-select" class="settings-select"></select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="api-key">API Key:</label>
+                    <div class="form-control-wrapper">
+                        <input type="password" id="api-key" name="apiKey">
+                        <select id="api-key-select" class="settings-select"></select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="model">Model:</label>
+                    <div class="form-control-wrapper">
+                        <input type="text" id="model" name="model" required>
+                        <select id="model-select" class="settings-select"></select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="system-prompt">System Prompt:</label>
+                    <div class="form-control-wrapper">
+                        <textarea id="system-prompt" name="systemPrompt" rows="4"></textarea>
+                        <select id="system-prompt-select" class="settings-select"></select>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" id="import-settings-btn" class="modal-btn">导入设置</button>
+                    <button type="button" id="export-settings-btn" class="modal-btn">导出设置</button>
+                    <button type="submit" class="modal-btn primary">保存</button>
+                    <button type="button" id="cancel-modal-btn" class="modal-btn">取消</button>
+                </div>
+            </form>
+        </div>
+        <input type="file" id="settings-file-input" accept=".json, .txt" style="display: none;" />
+    </div>
+    <div class="app-footer">
+        All AI capabilities powered by <a href="https://pollinations.ai/" target="_blank">pollinations.ai</a>
+    </div>
+</body>
+</html>
